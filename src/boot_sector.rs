@@ -106,7 +106,7 @@ impl BiosParameterBlock {
                 })
         } else {
             // The size field denotes a binary exponent after negation.
-            let exponent = (-size_info) as u32;
+            let exponent = (-(size_info as i16)) as u32;
 
             if !EXPONENT_RANGE.contains(&exponent) {
                 return Err(NtfsError::InvalidRecordSizeInfo {
